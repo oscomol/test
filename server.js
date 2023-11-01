@@ -1,8 +1,9 @@
 const express = require('express');
 const app = express();
 const cors = require('cors');
-const http = require('http').createServer(app);
-const io = require('socket.io')(http, {
+const http = require('http');
+const server = http.createServer(app);
+const io = require('socket.io')(server, {
   cors: {
     origin: "*",
     methods: ["GET", "POST"]
@@ -24,4 +25,4 @@ app.post("/test", (req, res) => {
   res.status(200).json({msg: "Success"});
 });
 
-http.listen(PORT, () => console.log(`Server running at port using socket ${PORT}`));
+server.listen(PORT, () => console.log(`Server running at port using socket ${PORT}`));
