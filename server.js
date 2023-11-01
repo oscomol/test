@@ -1,16 +1,21 @@
 const express = require('express');
 const app = express();
 const cors = require('cors');
-const PORT = process.env.on || 3500;
+const http = require('http').createServer(app);
+const io = require('socket.io')(http, {
+  cors: {
+    origin: "*",
+    methods: ["GET", "POST"]
+  }
+});
+const PORT = 3500;
 
 app.use(express.json());
 app.use(express.text());
 app.use(cors());
 
-app.post("/test", (req, res) => {
-    const text = req.body;
-    console.log(text)
-    res.status(200).send("Message recieved");
-})
+io.on('connection', (socket) => {
+  console.log('a user connected with id: ', socket.id);
+});
 
-app.listen(PORT, ()=> console.log(`Server running at port ${PORT}`))
+http.listen(PORT, () => console.log(`Server running at port using socket ${PORT}`));
