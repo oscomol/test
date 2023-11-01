@@ -21,6 +21,7 @@ io.on('connection', (socket) => {
 app.post("/test", (req, res) => {
   console.log(req.body);
   console.log("hello")
+  res.status(200).json({msg: "Success"})
 })
 
 app.listen(PORT, () => console.log(`Server running at port using socket ${PORT}`));
