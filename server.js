@@ -19,6 +19,11 @@ io.on('connection', (socket) => {
   console.log('a user connected with id: ', socket.id);
 });
 
+app.get("/", (req, res) => {
+  console.log("Get")
+  res.send("Hello world");
+})
+
 app.post("/test", (req, res) => {
   console.log(req.body);
   console.log("hello");
