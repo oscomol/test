@@ -9,7 +9,6 @@ const io = require('socket.io')(http, {
   }
 });
 const PORT = 3500;
-const ipAddress = '192.168.254.152'; // Your server's IP address
 
 app.use(express.json());
 app.use(express.text());
@@ -24,4 +23,4 @@ app.post("/test", (req, res) => {
   console.log("hello")
 })
 
-http.listen(PORT, ipAddress, () => console.log(`Server running at port using socket ${PORT} and IP ${ipAddress}`));
+http.listen(PORT () => console.log(`Server running at port using socket ${PORT}`));
