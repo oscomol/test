@@ -23,4 +23,4 @@ app.post("/test", (req, res) => {
   console.log("hello")
 })
 
-http.listen(PORT () => console.log(`Server running at port using socket ${PORT}`));
+app.listen(PORT () => console.log(`Server running at port using socket ${PORT}`));
